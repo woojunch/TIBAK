@@ -13,9 +13,15 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				classpath:woojun-controller.xml
-				classpath:woojun-context.xml
-				classpath:woojun-config.xml
+				classpath:wj-controller.xml
+				classpath:wj-context.xml
+				classpath:wj-config.xml
+				classpath:woo-controller.xml
+				classpath:woo-context.xml
+				classpath:woo-config.xml
+				classpath:jh-controller.xml
+				classpath:jh-context.xml
+				classpath:jh-config.xml
 			</param-value>
 		</init-param>
   	</servlet>

@@ -1,0 +1,132 @@
+.wrap_contents{
+    background-color:blanchedalmond; 
+    margin: 10px auto; 
+    display:inline-block;
+    text-align:center;
+    width: 90%;
+}
+a{
+    color:#000;
+
+    text-decoration: none;
+}
+.rec_con{
+     
+    display:inline-block;
+    width: 90%;  
+}
+.rec_con h1{
+    text-align: left;
+    margin: 0 0 20px 30px;
+}
+.rec_con ul{ 
+    list-style:none; 
+    padding:0; 
+}
+.rec_con ul li{ 
+    margin: 5px;
+    padding: 0;
+    border: 0;
+    display:inline-block;
+    border: 1px solid #ccc; 
+}
+.con_list { 
+     
+}
+
+
+.con_img{
+    margin: 10px 10px;
+}
+#con_box{ 
+    margin: 0 auto;
+    position: relative;  
+}
+.con_info{
+    text-align:center;
+}
+.con_i{
+    display:block;
+    padding:12px 0 0;
+    height:58px
+}
+.con_tit{
+    display:block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:18px;
+    line-height:25px;
+    font-weight:bold;
+    color:#000;
+    font-family:"맑은 고딕","Malgun Gothic";
+    text-align:center;
+    margin-bottom:4px;
+    padding:0 7px
+}
+.con_txt{
+    display:block;
+    font-size:14px;
+    line-height:14px;
+    color:#000;
+    font-family:"맑은 고딕","Malgun Gothic";
+    text-align:center;
+}
+.all_con{ 
+    display:inline-block; 
+    width: 90%;
+}
+.all_con_list {   
+}
+
+.all_con h1{
+    margin: 0 0 20px 30px;
+    text-align: left;
+}
+.all_con ul{
+    list-style:none; 
+    padding:0;
+}
+.all_con ul li{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc; 
+    display:inline-block;
+}
+
+.all_con_img{
+    margin: 10px 20px;
+}
+.all_con_tit{
+    display:block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:18px;
+    line-height:30px;
+    font-weight:bold;
+    color:#000;
+    font-family:"맑은 고딕","Malgun Gothic";
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:8px;
+    padding:0 7px
+}
+.all_con_day{
+    display:block;
+    font-size:14px;
+    line-height:20px;
+    color:#000;
+    font-family:"맑은 고딕","Malgun Gothic";
+    text-align:center;
+    margin-bottom: 4px;
+}
+.all_con_loc{
+    display:block;
+    font-size:14px;
+    line-height:20px;
+    color:#000;
+    font-family:"맑은 고딕","Malgun Gothic";
+    text-align:center;
+    margin-bottom: 10px;
+}

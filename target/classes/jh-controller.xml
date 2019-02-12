@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+<!-- 	<bean class="Controller.HelloController1" />
+	<bean class="Controller.RegisterController" />
+	<bean class="Controller.SurveyController" />
+	<bean class="Controller.TestController" />
+	<bean class="Controller.BoarderController" />
+	<bean class="Controller.LoginController" />
+	<bean class="Controller.LogoutController" />
+	<bean class="Controller.ChangePwdController" />		
+	<bean class="Controller.MemberListController" />	
+	<bean class="Controller.MemberDetailController" />
+	<bean class="Controller.ReportSubmissionController" /> -->
+	<bean class="Controller.MemberJoinController" />
+	<bean class="Controller.LoginController" />	
+</beans>
