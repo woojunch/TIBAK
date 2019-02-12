@@ -11,13 +11,6 @@
 	   		 "
 >
 	<context:annotation-config />
-	<bean id="dataSource" 
-		  class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value ="oracle.jdbc.driver.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="user" value = "homepage" />
-		<property name="password" value = "1234" />
-	</bean>
 	<!-- id="messageSource" 이름은 바꿔서는 안된다. -->
 	
 

@@ -112,7 +112,7 @@ tr, td{
                         <td>${conList.name }</td>
                         <td>${conList.showTime }</td>
                         <td>${conList.managementInform}</td>
-                        <td><button onclick="location.href='/tibak/concert/list?num=${conList.num}'" value="등록">
+                        <td><button onclick="location.href='/tibak/ticket/register?num=${conList.num}&viewTime=${conList.showTime}'">등록</button>
                         </td>
                     </tr>
 </c:forEach>

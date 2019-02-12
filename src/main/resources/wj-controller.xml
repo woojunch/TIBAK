@@ -8,4 +8,5 @@
 	
 	<bean class="Controller.TicketRegisterController" />
 	<bean class="Controller.ConRegisterConrtroller"/>
+	<bean class="Controller.ConHallRegisterController" />
 </beans>

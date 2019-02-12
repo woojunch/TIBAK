@@ -37,4 +37,6 @@ public class ConRegisterConrtroller {
 		return "concert/con_list";
 	}
 	
+	
+	
 }

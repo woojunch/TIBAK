@@ -1,6 +1,7 @@
 package Command;
 
 public class TicketCommand {
+	private String num; //공연번호
 	private String name; //상품명
 	private String img;  //상품이미지
 	private String content;  //상품설명
@@ -8,16 +9,25 @@ public class TicketCommand {
 	private String addr;  //공연장소
 	private String phone;  //연락처
 	private String trafficInform;  //교통안내
-	private String reserveInform;  //이용안내
+	private String reserveInform; //예매안내
+	private String useInform;  //이용안내
 	private int reserveBan; //예매수제한
-	private String startDate; // 공연시작일
-	private String endDate; // 공연종료일
-	private String manageInform; // 기획사정보
+	private String adTime; //입장시간
+	private String exTime; //퇴장시간
+	private String startConTerm; //공연기간시작일
+	private String endConterm; //공연기간종료일
+	private String conDate; // 공연날짜
+	private String startSaleTerm; //판매기간시작날짜
+	private String endSaleTerm; //판매기간종료날짜
 	private int ageBan; //관람나이제한
 	private String seatImg; //좌석배치도
 	private String genre; //장르
-	private String viewTime; //관람시간
-	
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
 	public String getName() {
 		return name;
 	}
@@ -66,29 +76,59 @@ public class TicketCommand {
 	public void setReserveInform(String reserveInform) {
 		this.reserveInform = reserveInform;
 	}
+	public String getUseInform() {
+		return useInform;
+	}
+	public void setUseInform(String useInform) {
+		this.useInform = useInform;
+	}
 	public int getReserveBan() {
 		return reserveBan;
 	}
 	public void setReserveBan(int reserveBan) {
 		this.reserveBan = reserveBan;
 	}
-	public String getStartDate() {
-		return startDate;
+	public String getAdTime() {
+		return adTime;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setAdTime(String adTime) {
+		this.adTime = adTime;
 	}
-	public String getEndDate() {
-		return endDate;
+	public String getExTime() {
+		return exTime;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setExTime(String exTime) {
+		this.exTime = exTime;
 	}
-	public String getManageInform() {
-		return manageInform;
+	public String getStartConTerm() {
+		return startConTerm;
 	}
-	public void setManageInform(String manageInform) {
-		this.manageInform = manageInform;
+	public void setStartConTerm(String startConTerm) {
+		this.startConTerm = startConTerm;
+	}
+	public String getEndConterm() {
+		return endConterm;
+	}
+	public void setEndConterm(String endConterm) {
+		this.endConterm = endConterm;
+	}
+	public String getConDate() {
+		return conDate;
+	}
+	public void setConDate(String conDate) {
+		this.conDate = conDate;
+	}
+	public String getStartSaleTerm() {
+		return startSaleTerm;
+	}
+	public void setStartSaleTerm(String startSaleTerm) {
+		this.startSaleTerm = startSaleTerm;
+	}
+	public String getEndSaleTerm() {
+		return endSaleTerm;
+	}
+	public void setEndSaleTerm(String endSaleTerm) {
+		this.endSaleTerm = endSaleTerm;
 	}
 	public int getAgeBan() {
 		return ageBan;
@@ -108,11 +148,11 @@ public class TicketCommand {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getViewTime() {
-		return viewTime;
-	}
-	public void setViewTime(String viewTime) {
-		this.viewTime = viewTime;
-	}
+	
+	
+	
+	
+	
+
 	
 }

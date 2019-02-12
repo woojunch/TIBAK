@@ -40,4 +40,5 @@
 	<bean id = "ticketDAO" class = "Model.TicketDAO" />
 	<bean id = "ticketRegisterService" class="Service.TicketRegisterService" />
 	<bean id = "conRegisterService" class="Service.ConRegisterService" />
+	<bean id = "conHallRegisterService" class="Service.ConHallRegisterService" />
 </beans>

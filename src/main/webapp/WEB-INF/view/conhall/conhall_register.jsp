@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>공연장등록</title>
 <link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Gothic" rel="stylesheet">
     <!--폰트(nav) 변경 -->
     <link href="../CSS/t_header.css" rel="stylesheet" type="text/css">
@@ -55,11 +55,6 @@
         border: 1px solid black;
     }
 </style>
-<script>
-    function conAdd(){
-        alert("dd");
-    }
-</script>
 <body>
     <div id="header">
         <div id="header_menu">
@@ -105,94 +100,40 @@
     <div id="register_container">
         <div id="register_content">
             <div id="content_header">
-                <div>상품등록</div>
+                <div>공연장등록</div>
 
             </div>
             <div id="form_box">
-            <form action="/tibak/ticket/list" method="post" enctype="multipart/form-data">
+            <form action="/tibak/conhall/list" method="post" enctype="multipart/form-data">
                 <table>
                 	<tr>
-                		<td>상품번호</td>
-                		<td><%=request.getParameter("num") %><input type="hidden" name="num" value="<%=request.getParameter("num")%>"></td>
-                    <tr>
-                        <td>상품명</td>
+                     	<td>공연장이름</td>
                         <td><input type="text" name="name"></td>
                     </tr>
                     <tr>
-                        <td>상품이미지</td>
-                        <td><input type="file" name="img"></td>
+                        <td>좌석수</td>
+                        <td><input type="text" name="capacity"></td>
                     </tr>
                     <tr>
-                        <td>상품설명</td>
-                        <td><textarea cols="30" rows="5" name="content"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td>가격</td>
-                        <td><input type="text" name="price"></td>
-                    </tr>
-                    <tr>
-                        <td>공연장소</td>
+                        <td>공연장주소</td>
                         <td><input type="text" name="addr"></td>
                     </tr>
                     <tr>
-                        <td>상품전화번호</td>
-                        <td><input type="text" name="phone"></td>
+                        <td>좌석행</td>
+                        <td><input type="text" name="row"></td>
                     </tr>
                     <tr>
-                        <td>교통안내</td>
-                        <td><input type="file" name="trafficInform"></td>
+                        <td>좌석열</td>
+                        <td><input type="text" name="column"></td>
                     </tr>
                     <tr>
-                        <td>예매안내</td>
-                        <td><input type="text" name="reserveInform"></td>
-                    </tr>
-                    <tr>
-                        <td>이용안내</td>
-                        <td><input type="text" name="useInform"></td>
-                    </tr>
-                    <tr>
-                        <td>최대예매수제한</td>
-                        <td><input type="text" name="reserveBan"></td>
-                    </tr>
-                    <tr>
-                        <td>공연기간</td>
-                        <td><input type="date" name="startConTerm">~<input type="date" name="endConterm"></td>
-                    </tr>
-                   	<tr>
-                        <td>공연날짜</td>
-                        <td><input type="date" name="conDate"></td>
-                    </tr>
-                    <tr>
-                        <td>판매기간</td>
-                        <td><input type="date" name="startSaleTerm">~<input type="date" name="endSaleConterm"></td>
-                    </tr>
-                    <tr>
-                        <td>관람나이제한</td>
-                        <td><input type="text" name="ageBan"></td>
-                    </tr>
-                    <tr>
-                        <td>관람시간</td>
-                        <td><%=request.getParameter("viewTime") %></td>
-                    </tr>
-                    <tr>
-                        <td>좌석배치도</td>
-                        <td><input type="file" name="seatImg"></td>
-                    </tr>
-                    <tr>
-                        <td>장르</td>
-                        <td><input type="text" name="genre"></td>
-                    </tr>
-                    <tr colspan="2">
-                    <input type="submit">
+                    	<td colspan="2"><input type="submit"></td>
                     </tr>
                 </table>
                 </form>
             </div>
         </div>
     </div>
-
-
-
     <!--푸터-->
     <div class="footer">
         <div class="wrap_footer">
