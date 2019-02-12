@@ -1,0 +1,62 @@
+.footer{
+    background-color:cornsilk;
+    height:150px;
+    width: 80%;  
+    margin: 0 auto;
+}
+.wrap_footer{
+    width: 95%;
+    margin: 0 auto;
+}
+a{
+    color:#000;
+
+    text-decoration: none;
+}
+
+.foot_link{
+    width: 100%;
+    color:#000; 
+    display: inline-block;  
+    margin: 10px 0;
+}
+.l_box{
+    float: left; 
+    font-size:14px;
+    line-height:14px;
+    color:#000;
+    font-family:"맑은 고딕","Malgun Gothic";
+    text-align:center;
+    margin-left: 40px;
+}  
+.r_box{
+    float: right; 
+    font-size:14px;
+    line-height:14px;
+    color:#000;
+    font-family:"맑은 고딕","Malgun Gothic";
+    text-align:center;
+} 
+.foot_bot{ 
+}
+.foot_bot ul li{ 
+    display:inline-block;
+    list-style-type:none;
+
+}
+.foot_com{  
+    display:block;    
+    font-size:13px;
+    line-height:50px;
+    color:#000;
+    font-family:"맑은 고딕","Malgun Gothic"; 
+}
+ 
+.com_info{      
+    display: block;  
+    font-size: 12px;
+    line-height: 1.5;
+    font-family: "돋움",Dotum,"맑은 고딕","Malgun Gothic","Apple Gothic",sans-serif;
+    letter-spacing: 1px;
+    margin-left: 40px;
+}
