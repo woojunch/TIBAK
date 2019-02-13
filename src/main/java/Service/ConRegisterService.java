@@ -17,11 +17,16 @@ public class ConRegisterService {
 		this.ticketDao = ticketDao;
 	}
 	
+	public ConRegisterService() {
+		
+	}
+	
 	public void conRegist(ConCommand cmd) {
 		ConDTO con=new ConDTO();
 		con.setName(cmd.getName());
 		con.setShowTime(cmd.getShowTime());
 		con.setManagementInform(cmd.getManagementInform());
+		System.out.println(con.getName());
 		ticketDao.conRegist(con);
 	}
 	

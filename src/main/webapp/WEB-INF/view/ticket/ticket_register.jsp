@@ -56,9 +56,17 @@
     }
 </style>
 <script>
-    function conAdd(){
-        alert("dd");
-    }
+function conHallSearch(){
+	var url="/tibak/conhall/popuplist";
+	window.open(url, "babo","toolbar=no, location=no,status=no,menubar=no, scrollbars=no,resizable=no,width=400, height=300");
+
+	
+	 /*  url = "AddConfirmId.me?id=" + id1.value;
+		// popup창 열때 사용
+		open(url, "confirmid","toolbar=no, location=no,status=no,menubar=no,"+
+						"scrollbars=no,resizable=no,width=400, height=300"); */
+	 
+}
 </script>
 <body>
     <div id="header">
@@ -99,7 +107,6 @@
             </ul>
         </div>
     </div>
-
     <!-- 요기까지 헤더 -->
 
     <div id="register_container">
@@ -131,8 +138,8 @@
                         <td><input type="text" name="price"></td>
                     </tr>
                     <tr>
-                        <td>공연장소</td>
-                        <td><input type="text" name="addr"></td>
+                        <td>공연장</td>
+                        <td><button onclick="conHallSearch();">공연장조회</td>
                     </tr>
                     <tr>
                         <td>상품전화번호</td>

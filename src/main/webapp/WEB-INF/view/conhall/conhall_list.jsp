@@ -1,66 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>공연등록</title>
-<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Gothic" rel="stylesheet">
+<title>Insert title here</title>
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Gothic" rel="stylesheet">
     <!--폰트(nav) 변경 -->
+
     <link href="../CSS/t_header.css" rel="stylesheet" type="text/css">
     <link href="../CSS/t_footer.css" rel="stylesheet" type="text/css">
 </head>
 <style>
-    body {
-        font-family: "Nanum Gothic", sans-serif;
-    }
+#container{
+    width:100%;
+    height:1200px;
+    background-color: aquamarine;
+    text-align:center;
+}
+#content{
+    display:inline-block;
+    width:80%;
+    height:100%;
+    background-color:lightblue;
+    text-align:center;
+}
+#content_header{
+    width:100%;
+    height:100px;
+    background-color:lightcoral;
+    padding:30px;
+    box-sizing:border-box;
+    text-align:left;
+    font-size:30px;
 
-    #register_container {
-        width: 100%;
-        height: 1800px;
-        background-color: lightblue;
-        text-align: center;
-    }
-
-    #register_content {
-        display: inline-block;
-        width: 80%;
-        height: 100%;
-        background-color: lightgreen;
-        box-sizing: border-box;
-    }
-
-    #content_header {
-        width: 100%;
-        height: 100px;
-        background-color: lightcoral;
-        text-align: left;
-        box-sizing: border-box;
-        padding: 30px;
-        font-size: 30px;
-    }
-
-    #form_box {
-        width: 100%;
-        background-color: aquamarine;
-        text-align: center;
-    }
-
-    table {
-        width: 80%;
-    }
-
-    tr,
-    td {
-        border: 1px solid black;
-    }
+}
+#table_box{
+    display:inline-block;
+    width:80%;
+    height:800px;
+    background-color:lightgreen;
+}
+table{
+    width:100%;
+}
+tr, td{
+    border:1px solid black;
+}
 </style>
-<script>
-    function conAdd(){
-        alert("dd");
-    }
-</script>
+
 <body>
+
     <div id="header">
         <div id="header_menu">
             <ul>
@@ -101,39 +92,34 @@
     </div>
 
     <!-- 요기까지 헤더 -->
-
-    <div id="register_container">
-        <div id="register_content">
-            <div id="content_header">
-                <div>공연등록</div>
-
-            </div>
-            <div id="form_box">
-            <form action="/tibak/concert/register" method="post" enctype="multipart/form-data">
+    <div id="container">
+        <div id="content">
+            <div id="content_header">공연리스트</div>
+            <div id="table_box">
                 <table>
                     <tr>
-                        <td>공연명</td>
-                        <td><input type="text" name="name"></td>
+                        <td>공연장번호</td>
+                        <td>공연장이름</td>
+                        <td>좌석수</td>
+                        <td>주소</td>
+                        <td>좌석행</td>
+                        <td>좌석열</td>
                     </tr>
-					<tr>
-						<td>상영시간</td>
-						<td><input type="text" name="showTime"></td>
-					</tr>
-					<tr>
-						<td>기획사정보</td>
-						<td><input type="text" name="managementInform"></td>
-					</tr>
-					
+<c:forEach items="${conHallList }" var="conHallList">
                     <tr>
-                   	 	<td colspan="2"><input type="submit"></td>
+                        <td>${conHallList.num }</td>
+                        <td>사진</td>
+                        <td>${conHallList.name }</td>
+                        <td>${conHallList.capacity }</td>
+                        <td>${conHallList.row}</td>
+                        <td>${conHallList.column}</td>
                     </tr>
+</c:forEach>
                 </table>
-               </form>
+
             </div>
         </div>
     </div>
-
-
 
     <!--푸터-->
     <div class="footer">
@@ -168,6 +154,4 @@
         </div>
     </div>
 </body>
-
-</html></body>
 </html>

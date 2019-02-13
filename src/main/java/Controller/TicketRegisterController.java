@@ -15,7 +15,7 @@ public class TicketRegisterController {
 	@Autowired
 	private TicketRegisterService ticketRegisterService;
 	
-	
+	//티켓상품등록페이지
 	@RequestMapping(value="/ticket/register", method=RequestMethod.GET)
 	public String handleTicketRegister() {
 		return "ticket/ticket_register";
