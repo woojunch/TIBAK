@@ -101,6 +101,7 @@ tr, td{
                         <td>공연장번호</td>
                         <td>공연장이름</td>
                         <td>좌석수</td>
+                        <td>지역</td>
                         <td>주소</td>
                         <td>좌석행</td>
                         <td>좌석열</td>
@@ -108,9 +109,10 @@ tr, td{
 <c:forEach items="${conHallList }" var="conHallList">
                     <tr>
                         <td>${conHallList.num }</td>
-                        <td>사진</td>
                         <td>${conHallList.name }</td>
                         <td>${conHallList.capacity }</td>
+                        <td>${conHallList.area }</td>
+                        <td>${conHallList.addr }</td>
                         <td>${conHallList.row}</td>
                         <td>${conHallList.column}</td>
                     </tr>

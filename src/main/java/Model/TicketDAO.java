@@ -38,13 +38,13 @@ public class TicketDAO {
 	
 	//공연장등록
 	public void conHallRegist(ConHallDTO dto) {
-		sql="insert into CONCERTHALL(T_CON_NUM, T_CON_NAME, T_CON_CAPACITY, T_CON_ADDR, T_CON_ROW, T_CON_COLUMN) values(concat('H',(select nvl(max(substr(t_con_num,2)),0)+1 from concerthall)),?,?,?,?,?)";
-		jdbcTemplate.update(sql, dto.getName(), dto.getCapacity(), dto.getAddr(), dto.getRow(), dto.getColumn());
+		sql="insert into CONCERTHALL(T_CON_NUM, T_CON_NAME, T_CON_CAPACITY, T_CON_AREA, T_CON_ADDR, T_CON_ROW, T_CON_COLUMN) values(concat('H',(select nvl(max(substr(t_con_num,2)),0)+1 from concerthall)),?,?,?,?,?,?)";
+		jdbcTemplate.update(sql, dto.getName(), dto.getCapacity(), dto.getAddr().substring(0,2), dto.getAddr(), dto.getRow(), dto.getColumn());
 	}
 	
 	//공연장리스트
 	public List<ConHallDTO> conHallList() {
-		sql="select T_CON_NUM, T_CON_NAME, T_CON_CAPACITY, T_CON_ADDR, T_CON_ROW, T_CON_COLUMN from CONCERTHALL";
+		sql="select T_CON_NUM, T_CON_NAME, T_CON_CAPACITY, T_CON_AREA, T_CON_ADDR, T_CON_ROW, T_CON_COLUMN from CONCERTHALL";
 		conHallList = jdbcTemplate.query(sql,  new ConHallDTORowMapper());
 		return conHallList;
 	}
@@ -77,6 +77,7 @@ class ConHallDTORowMapper implements RowMapper <ConHallDTO> {
 		dto.setNum(rs.getString("t_con_num"));
 		dto.setName(rs.getString("t_con_name"));
 		dto.setCapacity(rs.getInt("t_con_capacity"));
+		dto.setArea(rs.getString("t_con_area"));
 		dto.setAddr(rs.getString("t_con_addr"));
 		dto.setRow(rs.getInt("t_con_row"));
 		dto.setColumn(rs.getInt("t_con_column"));

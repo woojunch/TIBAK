@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.*, Model.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% List<ConHallDTO> list=(List<ConHallDTO>)request.getAttribute("conHallList"); %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +15,15 @@ tr,td{
 	border:1px solid black;
 }
 </style>
+<script>
+function conHallSelect(num){
+	opener.document.getElementById("conhallNum").value=num;
+	window.close();
+	
+}
+</script>
 <body>
+공연장선택
       <table>
                     <tr>
                         <td>공연장번호</td>
@@ -22,16 +33,16 @@ tr,td{
                         <td>좌석행</td>
                         <td>좌석열</td>
                     </tr>
-<c:forEach items="${conHallList }" var="conHallList">
-                    <tr>
-                        <td><a>${conHallList.num }</a></td>
-                        <td>사진</td>
-                        <td>${conHallList.name }</td>
-                        <td>${conHallList.capacity }</td>
-                        <td>${conHallList.row}</td>
-                        <td>${conHallList.column}</td>
+                   <%for(int i=0;i<list.size();i++){ %>
+                     <tr>
+                        <td><a href="#" onclick="conHallSelect('<%=list.get(i).getNum()%>');"><%=list.get(i).getNum()%></a></td>
+                        <td><%=list.get(i).getName()%></td>
+                        <td><%=list.get(i).getCapacity()%></td>
+                        <td><%=list.get(i).getAddr() %>
+                        <td><%=list.get(i).getRow()%></td>
+                        <td><%=list.get(i).getColumn()%></td>
                     </tr>
-</c:forEach>
+					<%} %> 
                 </table>
 </body>
 </html>

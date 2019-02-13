@@ -1,6 +1,11 @@
 package Service;
 
+import java.io.File;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
 import Command.TicketCommand;
 import Model.TicketDAO;
@@ -14,12 +19,51 @@ public class TicketRegisterService {
 		this.ticketDao = ticketDao;
 	}
 	
-	public void regist(TicketCommand tcd) {
+	File file = null;
+	String imgOriginalFile = null;
+	String trafficOriginalFile = null;
+	String seatOriginalFile = null;
+	
+	String imgOriginalFileExtension = null;
+	String trafficOriginalFileExtension = null;
+	String seatOriginalFileExtension = null;
+	
+	String storeFile = null;
+	String fileSize = null;
+	
+	String originalFiles = "";
+	String storeFiles = "";
+	String filesSize = "";
+	
+	
+	public String regist(TicketCommand tcd,HttpServletRequest request) {
+		System.out.println("뭐야");
+		String path = null;
+		System.out.println(request.getRealPath("/WEB-INF/view/")+"ticket\\upfile\\");
+		String filePath = request.getRealPath("/WEB-INF/view/")+"ticket\\upfile\\";
+		MultipartFile img = tcd.getImg();
+		MultipartFile trafficInform = tcd.getTrafficInform();
+		MultipartFile seatImg = tcd.getSeatImg();
+		
+		imgOriginalFile = img.getOriginalFilename();
+		trafficOriginalFile= trafficInform.getOriginalFilename();
+		seatOriginalFile=seatImg.getOriginalFilename();
+		// 확장자 추출  (.hwp  .doc)
+		
+		imgOriginalFileExtension = imgOriginalFile.substring(imgOriginalFile.lastIndexOf("."));
+		trafficOriginalFileExtension = trafficOriginalFile.substring(trafficOriginalFile.lastIndexOf("."));
+		seatOriginalFileExtension = seatOriginalFile.substring(seatOriginalFile.lastIndexOf("."));
+		
+		
+		return null;
+		
+		
+/*		
+		
+		
 		TicketDTO dto = new TicketDTO();
 		//상품번호는 db에서
 		dto.setProNum(1234);
-		
-		
 		dto.setNum(tcd.getNum());
 		//공연장번호는 공연장테이블에서
 		dto.setHallNum("4321");
@@ -45,7 +89,7 @@ public class TicketRegisterService {
 		dto.setViewTime(200);
 		dto.setSeatMap(tcd.getSeatImg());
 		
-		ticketDao.ticketRegister(dto);
+		ticketDao.ticketRegister(dto);*/
 		
 	}
 }

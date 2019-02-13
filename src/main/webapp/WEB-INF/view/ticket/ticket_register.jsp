@@ -58,7 +58,8 @@
 <script>
 function conHallSearch(){
 	var url="/tibak/conhall/popuplist";
-	window.open(url, "babo","toolbar=no, location=no,status=no,menubar=no, scrollbars=no,resizable=no,width=400, height=300");
+	window.name="parentForm";
+	window.open(url, "childForm","toolbar=no, location=no,status=no,menubar=no, scrollbars=no,resizable=no,width=400, height=300");
 
 	
 	 /*  url = "AddConfirmId.me?id=" + id1.value;
@@ -116,10 +117,10 @@ function conHallSearch(){
 
             </div>
             <div id="form_box">
-            <form action="/tibak/ticket/list" method="post" enctype="multipart/form-data">
+            <form action="/tibak/ticket/register" method="post" enctype="multipart/form-data">
                 <table>
                 	<tr>
-                		<td>상품번호</td>
+                		<td>공연번호</td>
                 		<td><%=request.getParameter("num") %><input type="hidden" name="num" value="<%=request.getParameter("num")%>"></td>
                     <tr>
                         <td>상품명</td>
@@ -139,7 +140,7 @@ function conHallSearch(){
                     </tr>
                     <tr>
                         <td>공연장</td>
-                        <td><button onclick="conHallSearch();">공연장조회</td>
+                        <td><input type="button" onclick="conHallSearch();" value="공연장조회"><input type="text" name="conhallNum" id="conhallNum"></td>
                     </tr>
                     <tr>
                         <td>상품전화번호</td>
@@ -162,6 +163,10 @@ function conHallSearch(){
                         <td><input type="text" name="reserveBan"></td>
                     </tr>
                     <tr>
+                        <td>공연시간</td>
+                        <td><input type="text" name="adTime">~<input type="text" name="exTime"></td>
+                    </tr>
+                    <tr>
                         <td>공연기간</td>
                         <td><input type="date" name="startConTerm">~<input type="date" name="endConterm"></td>
                     </tr>
@@ -179,7 +184,7 @@ function conHallSearch(){
                     </tr>
                     <tr>
                         <td>관람시간</td>
-                        <td><%=request.getParameter("viewTime") %></td>
+                        <td><%=request.getParameter("viewTime") %><input type="hidden" name="viewTime"></td>
                     </tr>
                     <tr>
                         <td>좌석배치도</td>

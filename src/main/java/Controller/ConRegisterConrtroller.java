@@ -25,12 +25,12 @@ public class ConRegisterConrtroller {
 	
 	//공연등록페이지
 	@RequestMapping(value="/concert/register", method=RequestMethod.GET)
-	public String handleConRegister() {
+	public String handleConRegisterView() {
 		return "concert/con_register";
 	}
 	//공연등록
 	@RequestMapping(value="/concert/register", method=RequestMethod.POST)
-	public String handleConComplete(ConCommand cmd) {
+	public String handleConRegister(ConCommand cmd) {
 		conRegisterService.conRegist(cmd);
 		return "redirect:/concert/list";
 	}

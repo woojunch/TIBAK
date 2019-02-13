@@ -4,10 +4,17 @@ public class ConHallDTO {
 	private String num;
 	private String name;
 	private int capacity;
+	private String area;
 	private String addr;
 	private int row;
 	private int column;
 	
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
 	public String getNum() {
 		return num;
 	}
