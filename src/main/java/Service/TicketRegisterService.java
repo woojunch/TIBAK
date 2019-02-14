@@ -1,6 +1,8 @@
 package Service;
 
 import java.io.File;
+import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,13 +15,16 @@ import Model.TicketDTO;
 
 public class TicketRegisterService {
 	private TicketDAO ticketDao;
+	private List<TicketDTO> ticketList;
 	
 	@Autowired
 	public TicketRegisterService(TicketDAO ticketDao) {
 		this.ticketDao = ticketDao;
 	}
 	
-	File file = null;
+	File ImgFile = null;
+	File TrafficFile = null;
+	File SeatFile = null;
 	String imgOriginalFile = null;
 	String trafficOriginalFile = null;
 	String seatOriginalFile = null;
@@ -28,22 +33,32 @@ public class TicketRegisterService {
 	String trafficOriginalFileExtension = null;
 	String seatOriginalFileExtension = null;
 	
-	String storeFile = null;
-	String fileSize = null;
+	String ImgStoreFile = null;
+	String TrafficStoreFile = null;
+	String SeatStoreFile = null;
+	
+	
+	String ImgFileSize = null;
+	String TrafficFileSize = null;
+	String SeatFileSize = null;
 	
 	String originalFiles = "";
 	String storeFiles = "";
 	String filesSize = "";
 	
 	
-	public String regist(TicketCommand tcd,HttpServletRequest request) {
+	public String regist(TicketCommand cmd, HttpServletRequest request) {
 		System.out.println("뭐야");
+		System.out.println(cmd.getNum());
+		System.out.println(cmd.getImg());
+		System.out.println(cmd.getPrice());
+		System.out.println(cmd.getStartConTerm());
 		String path = null;
 		System.out.println(request.getRealPath("/WEB-INF/view/")+"ticket\\upfile\\");
 		String filePath = request.getRealPath("/WEB-INF/view/")+"ticket\\upfile\\";
-		MultipartFile img = tcd.getImg();
-		MultipartFile trafficInform = tcd.getTrafficInform();
-		MultipartFile seatImg = tcd.getSeatImg();
+		MultipartFile img = cmd.getImg();
+		MultipartFile trafficInform = cmd.getTrafficInform();
+		MultipartFile seatImg = cmd.getSeatImg();
 		
 		imgOriginalFile = img.getOriginalFilename();
 		trafficOriginalFile= trafficInform.getOriginalFilename();
@@ -54,42 +69,47 @@ public class TicketRegisterService {
 		trafficOriginalFileExtension = trafficOriginalFile.substring(trafficOriginalFile.lastIndexOf("."));
 		seatOriginalFileExtension = seatOriginalFile.substring(seatOriginalFile.lastIndexOf("."));
 		
+		//임의의이름
+		ImgStoreFile = UUID.randomUUID().toString().replaceAll("-", "");
+		TrafficStoreFile = UUID.randomUUID().toString().replaceAll("-", "");
+		SeatStoreFile = UUID.randomUUID().toString().replaceAll("-", "");
+		
+		ImgStoreFile = ImgStoreFile+imgOriginalFileExtension;
+		TrafficStoreFile = TrafficStoreFile+trafficOriginalFileExtension;
+		SeatStoreFile = SeatStoreFile+seatOriginalFileExtension;
+		System.out.println("Asdf: "+ImgStoreFile);
+		
+		ImgFileSize = Long.toString(img.getSize());
+		TrafficFileSize = Long.toString(trafficInform.getSize());
+		SeatFileSize = Long.toString(seatImg.getSize());
+		
+		ImgFile = new File(filePath+ImgStoreFile); //파일생성
+		TrafficFile = new File(filePath+TrafficStoreFile); //파일생성
+		SeatFile = new File(filePath+SeatStoreFile); //파일생성
+		
+		try {
+			img.transferTo(ImgFile);
+			trafficInform.transferTo(TrafficFile);
+			seatImg.transferTo(SeatFile);
+		} catch(Exception e){
+			e.printStackTrace();
+			return "ticket/ticket_register";
+		}
+		
+		TicketDTO dto = new TicketDTO(cmd.getName(), cmd.getName(), cmd.getConhallNum(), imgOriginalFile, cmd.getContent(), cmd.getPrice(), cmd.getPhone(), trafficOriginalFile, cmd.getReserveInform(), cmd.getUseInform(), cmd.getReserveBan(), cmd.getAdTime(), cmd.getExTime(), cmd.getConDate(), cmd.getStartSaleTerm()+"~"+cmd.getEndSaleTerm(),cmd.getStartConTerm()+"~"+cmd.getEndConTerm(),cmd.getGenre(),cmd.getAgeBan(),cmd.getViewTime(),seatOriginalFile);
+		
+		ticketDao.ticketRegist(dto, ImgStoreFile, TrafficStoreFile, SeatStoreFile);
 		
 		return null;
 		
-		
-/*		
-		
-		
-		TicketDTO dto = new TicketDTO();
-		//상품번호는 db에서
-		dto.setProNum(1234);
-		dto.setNum(tcd.getNum());
-		//공연장번호는 공연장테이블에서
-		dto.setHallNum("4321");
-		dto.setImage(tcd.getImg());
-		dto.setPrice(tcd.getPrice());
-		dto.setContent(tcd.getContent());
-		dto.setPrice(tcd.getPrice());
-		//공연장주소는 공연장테이블에서
-		dto.setTrafficImage(tcd.getTrafficInform());
-		dto.setReserveInform(tcd.getReserveInform());
-		dto.setUseInform(tcd.getUseInform());
-		dto.setReserveBan(tcd.getReserveBan());
-		dto.setReserveCon("판매예정"); //판매상태
-		dto.setAdTime(tcd.getAdTime());
-		dto.setExTime(tcd.getExTime());
-		dto.setConDate(tcd.getConDate());
-		dto.setSaleTerm(tcd.getStartSaleTerm()+"~"+tcd.getEndSaleTerm());
-		dto.setConTerm(tcd.getStartConTerm()+"~"+tcd.getEndConterm());
-		dto.setGenre(tcd.getGenre());
-		dto.setAgeBan(tcd.getAgeBan());
-		
-		//상영시간 db에서
-		dto.setViewTime(200);
-		dto.setSeatMap(tcd.getSeatImg());
-		
-		ticketDao.ticketRegister(dto);*/
+	}
+	
+	public List<TicketDTO> ticketList(){
+		ticketList = ticketDao.ticketList();
+		return ticketList;
+	}
+	
+	public void ticketProRegist() {
 		
 	}
 }

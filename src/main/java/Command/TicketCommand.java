@@ -1,14 +1,18 @@
 package Command;
 
+import java.util.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class TicketCommand {
 	private String num; //공연번호
 	private String name; //상품명
 	private MultipartFile img;  //상품이미지
+	
 	private String content;  //상품설명
 	private int price;  //가격
-	private String conhallNum;
+
+	private String conhallNum; //공연장번호
 	private String phone;  //연락처
 	private MultipartFile trafficInform;  //교통안내
 	private String reserveInform; //예매안내
@@ -17,7 +21,7 @@ public class TicketCommand {
 	private String adTime; //입장시간
 	private String exTime; //퇴장시간
 	private String startConTerm; //공연기간시작일
-	private String endConterm; //공연기간종료일
+	private String endConTerm; //공연기간종료일
 	private String conDate; // 공연날짜
 	private String startSaleTerm; //판매기간시작날짜
 	private String endSaleTerm; //판매기간종료날짜
@@ -25,36 +29,6 @@ public class TicketCommand {
 	private int viewTime; //상영시간
 	private MultipartFile seatImg; //좌석배치도
 	private String genre; //장르
-	
-	public TicketCommand() {}
-	public TicketCommand(String num, String name, MultipartFile img, String content, int price, String conhallNum,
-			String phone, MultipartFile trafficInform, String reserveInform, String useInform, int reserveBan,
-			String adTime, String exTime, String startConTerm, String endConterm, String conDate, String startSaleTerm,
-			String endSaleTerm, int ageBan, int viewTime, MultipartFile seatImg, String genre) {
-		super();
-		this.num = num;
-		this.name = name;
-		this.img = img;
-		this.content = content;
-		this.price = price;
-		this.conhallNum = conhallNum;
-		this.phone = phone;
-		this.trafficInform = trafficInform;
-		this.reserveInform = reserveInform;
-		this.useInform = useInform;
-		this.reserveBan = reserveBan;
-		this.adTime = adTime;
-		this.exTime = exTime;
-		this.startConTerm = startConTerm;
-		this.endConterm = endConterm;
-		this.conDate = conDate;
-		this.startSaleTerm = startSaleTerm;
-		this.endSaleTerm = endSaleTerm;
-		this.ageBan = ageBan;
-		this.viewTime = viewTime;
-		this.seatImg = seatImg;
-		this.genre = genre;
-	}
 	public String getNum() {
 		return num;
 	}
@@ -139,11 +113,11 @@ public class TicketCommand {
 	public void setStartConTerm(String startConTerm) {
 		this.startConTerm = startConTerm;
 	}
-	public String getEndConterm() {
-		return endConterm;
+	public String getEndConTerm() {
+		return endConTerm;
 	}
-	public void setEndConterm(String endConterm) {
-		this.endConterm = endConterm;
+	public void setEndConTerm(String endConTerm) {
+		this.endConTerm = endConTerm;
 	}
 	public String getConDate() {
 		return conDate;
@@ -187,7 +161,6 @@ public class TicketCommand {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	
 
-	
+
 }

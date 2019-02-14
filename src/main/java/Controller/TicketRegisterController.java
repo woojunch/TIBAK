@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import Command.TicketCommand;
+import Model.TicketDTO;
 import Service.TicketRegisterService;
 
 @Controller
 public class TicketRegisterController {
 	
+	List<TicketDTO> ticketList;
 	@Autowired
 	private TicketRegisterService ticketRegisterService;
 	
@@ -26,8 +30,8 @@ public class TicketRegisterController {
 	}
 	//티켓등록
 	@RequestMapping(value="/ticket/register", method=RequestMethod.POST)
-	public String handleTickertRegister(
-		@RequestParam("num") String num,
+	public String handleTickertRegister(TicketCommand cmd, HttpServletRequest request) {
+/*		@RequestParam("num") String num,
 		@RequestParam("name") String name,
 		@RequestParam("img") MultipartFile img,
 		@RequestParam("content") String content,
@@ -52,19 +56,27 @@ public class TicketRegisterController {
 		HttpServletRequest request, Model model){
 		TicketCommand tcd = new TicketCommand(num,name,img,content,price,conhallNum,phone,trafficInform,
 				reserveInform,useInform,reserveBan,adTime,exTime,startConTerm,endConterm,conDate,startSaleTerm,endSaleConterm,
-				ageBan,viewTime,seatImg,genre);
+				ageBan,viewTime,seatImg,genre);*/
 		
-/*		String path=ticketRegisterService.regist(tcd,request);*/
-		
-		
-		
-		
-		
-		
-		
+		String path=ticketRegisterService.regist(cmd, request);
 		
 //		ticketRegisterService.regist(tcd);
-		return "path";
+		return "redirect:/ticket/ticket_list";
 	}
-
+	
+	@RequestMapping(value="/ticket/list",  method={RequestMethod.GET, RequestMethod.POST})
+	public String handleTicketList(Model model) {
+		ticketList=ticketRegisterService.ticketList();
+		model.addAttribute("ticketList",ticketList);
+		return "ticket/ticket_list";
+	}
+	
+	@RequestMapping(value="/ticket/mainview", method=RequestMethod.POST)
+	public String handleTicketView(HttpServletRequest request) {
+		String proNum=request.getParameter("proNum");
+		ticketRegisterService.ticketProRegist();
+		
+		
+		return null;
+	}
 }

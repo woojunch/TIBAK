@@ -130,7 +130,7 @@ function conHallSearch(){
                         <td>상품이미지</td>
                         <td><input type="file" name="img"></td>
                     </tr>
-                    <tr>
+              	    <tr>
                         <td>상품설명</td>
                         <td><textarea cols="30" rows="5" name="content"></textarea></td>
                     </tr>
@@ -138,55 +138,55 @@ function conHallSearch(){
                         <td>가격</td>
                         <td><input type="text" name="price"></td>
                     </tr>
-                    <tr>
+                     <tr>
                         <td>공연장</td>
                         <td><input type="button" onclick="conHallSearch();" value="공연장조회"><input type="text" name="conhallNum" id="conhallNum"></td>
                     </tr>
                     <tr>
-                        <td>상품전화번호</td>
+                        <td>연락처</td>
                         <td><input type="text" name="phone"></td>
                     </tr>
-                    <tr>
+               		<tr>
                         <td>교통안내</td>
                         <td><input type="file" name="trafficInform"></td>
-                    </tr>
+                      </tr>
                     <tr>
                         <td>예매안내</td>
                         <td><input type="text" name="reserveInform"></td>
                     </tr>
-                    <tr>
+                   <tr>
                         <td>이용안내</td>
                         <td><input type="text" name="useInform"></td>
                     </tr>
-                    <tr>
+                   <tr>
                         <td>최대예매수제한</td>
                         <td><input type="text" name="reserveBan"></td>
                     </tr>
-                    <tr>
+                      <tr>
                         <td>공연시간</td>
                         <td><input type="text" name="adTime">~<input type="text" name="exTime"></td>
                     </tr>
-                    <tr>
+              		<tr>
                         <td>공연기간</td>
-                        <td><input type="date" name="startConTerm">~<input type="date" name="endConterm"></td>
+                        <td><input type="date" name="startConTerm">~<input type="date" name="endConTerm"></td>
                     </tr>
-                   	<tr>
+        			<tr>
                         <td>공연날짜</td>
                         <td><input type="date" name="conDate"></td>
                     </tr>
-                    <tr>
+              		<tr>
                         <td>판매기간</td>
-                        <td><input type="date" name="startSaleTerm">~<input type="date" name="endSaleConterm"></td>
+                        <td><input type="date" name="startSaleTerm">~<input type="date" name="endSaleTerm"></td>
                     </tr>
                     <tr>
                         <td>관람나이제한</td>
                         <td><input type="text" name="ageBan"></td>
                     </tr>
-                    <tr>
+	                <tr>
                         <td>관람시간</td>
-                        <td><%=request.getParameter("viewTime") %><input type="hidden" name="viewTime"></td>
-                    </tr>
-                    <tr>
+                        <td><%=request.getParameter("viewTime") %><input type="hidden" name="viewTime"  value="<%=request.getParameter("viewTime")%>"> </td>
+                    </tr> 
+                      <tr>
                         <td>좌석배치도</td>
                         <td><input type="file" name="seatImg"></td>
                     </tr>
@@ -194,7 +194,7 @@ function conHallSearch(){
                         <td>장르</td>
                         <td><input type="text" name="genre"></td>
                     </tr>
-                    <tr colspan="2">
+                    <tr colspan="2">   
                     <input type="submit">
                     </tr>
                 </table>
