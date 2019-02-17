@@ -1,9 +1,21 @@
+body{
+    font-family: 'Nanum Gothic', sans-serif;
+    /* font-family: 'Do Hyeon', sans-serif; */
+}
 .wrap_contents{
-    background-color:blanchedalmond; 
-    margin: 10px auto; 
-    display:inline-block;
+    /* background-color:blanchedalmond;  */
+    margin: 10px auto;  
     text-align:center;
-    width: 90%;
+    width: 80%;
+}
+.h1tit{
+    width: 200px;
+    margin-left: 20px;
+    display: block;
+    font-size: 30px;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em; 
+
 }
 a{
     color:#000;
@@ -15,9 +27,16 @@ a{
     display:inline-block;
     width: 90%;  
 }
-.rec_con h1{
-    text-align: left;
-    margin: 0 0 20px 30px;
+#tit{    
+    font-family: 'Do Hyeon', sans-serif;
+    text-align: left; 
+    letter-spacing: 1px;
+    width: 70%;
+    margin: 0 auto; 
+}
+.rec_con h1{    
+     
+
 }
 .rec_con ul{ 
     list-style:none; 
@@ -79,10 +98,12 @@ a{
 .all_con_list {   
 }
 
-.all_con h1{
+/* .all_con h1{
+    font-family: 'Do Hyeon', sans-serif;
     margin: 0 0 20px 30px;
     text-align: left;
-}
+    letter-spacing: 1px;
+} */
 .all_con ul{
     list-style:none; 
     padding:0;
@@ -106,7 +127,7 @@ a{
     line-height:30px;
     font-weight:bold;
     color:#000;
-    font-family:"맑은 고딕","Malgun Gothic";
+    font-family: 'Nanum Gothic', sans-serif;
     text-align:center;
     margin-top:10px;
     margin-bottom:8px;
@@ -117,7 +138,7 @@ a{
     font-size:14px;
     line-height:20px;
     color:#000;
-    font-family:"맑은 고딕","Malgun Gothic";
+    font-family: 'Nanum Gothic', sans-serif;
     text-align:center;
     margin-bottom: 4px;
 }
@@ -126,7 +147,7 @@ a{
     font-size:14px;
     line-height:20px;
     color:#000;
-    font-family:"맑은 고딕","Malgun Gothic";
+    font-family: 'Nanum Gothic', sans-serif;
     text-align:center;
     margin-bottom: 10px;
 }

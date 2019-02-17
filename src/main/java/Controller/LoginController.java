@@ -1,5 +1,6 @@
 package Controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,32 +13,44 @@ import Command.MemberLogin;
 import Model.AuthInfo;
 import Service.LoginService;
 
-@Controller
-@RequestMapping("/login")
+@Controller 
 public class LoginController {
 
 	@Autowired
 	private LoginService loginService;
 
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String login(Model model) {
 		model.addAttribute("memberLogin", new MemberLogin());
 
-		return "login";
+		return "member/login";
 	}
 
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(value="main", method=RequestMethod.GET)
+	public String main() {
+		return "main";
+	}
+	
+	
+	@RequestMapping(value="main", method=RequestMethod.POST)
 	public String login1(MemberLogin memberLogin, HttpSession session) {
-		try {
-			
-			AuthInfo authInfo = loginService.chkLogin(memberLogin.getId(), memberLogin.getPassword());
-			System.out.println("여기");
-			session.setAttribute("authInfo", authInfo);
-
-			return "loginSuccess";
+		try {  
+			AuthInfo authInfo = loginService.chkLogin(memberLogin.getId(), memberLogin.getPassword()); 
+			if(authInfo!=null) {
+				session.setAttribute("authInfo", authInfo);
+			}
+			return "main";
 		}catch (Exception e) {
-			return "login";
+			System.out.println("뭐야 ㅠㅠ");
+			return "member/login";
 		}
-
+		
+	}
+	//로그아웃
+	@RequestMapping(value="main/logout", method=RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate(); //session삭제
+		return "redirect:/main";
 	}
 }

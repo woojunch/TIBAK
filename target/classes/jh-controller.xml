@@ -18,4 +18,8 @@
 	<bean class="Controller.ReportSubmissionController" /> -->
 	<bean class="Controller.MemberJoinController" />
 	<bean class="Controller.LoginController" />	
+	<bean class="Controller.BusinessJoinController" />	
+	<bean class="Controller.BusinessLoginController" />	
+	<bean class="Controller.MemberListController" />	
+	<bean class="Controller.BusinessMemberListController" />	
 </beans>

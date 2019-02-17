@@ -34,23 +34,36 @@ public class MemberJoinDAO {
 	public MemberJoinDTO selectById(String id) {
 		MemberJoinDTO member = null;
 
+
 		sql = "select m_id, m_name, m_password, m_birth, m_gender, "
 				+ " m_email, m_addr, m_mail_received, m_message_received, m_date, m_password_date, m_phone "
-				+ " from member where id = ?";
-		System.out.println(id);
-		list = jdbcTemplate.query(sql, new MemberRowMapper(), id);
-		
-		member = list.isEmpty() ? null : list.get(0);
+				+ " from member where m_id = ?"; 
+		list = jdbcTemplate.query(sql, new MemberRowMapper(), id); 
 
-
+		member = list.isEmpty() ? null : list.get(0); 
+		System.out.println("daㅁㅇ:"+id);
+		if(member==null) {
+			System.out.println("나와주세욘");
+		}
 		return member;
 	} 
+	public void memberupdate(MemberJoinDTO newMember) {
+		sql = "update member set m_id = ?, m_password = ?, m_phone = ?, m_addr = ?,"
+				+ "  m_mail_received = ? , m_message_received = ? , m_password_date = sysdate";
+		jdbcTemplate.update(sql, newMember.getId(), newMember.getPasswd(), newMember.getPhone(),
+				newMember.getAddr(), newMember.getMailrecv(), newMember.getSmsrecv());
+	}
+	public List<MemberJoinDTO> memberList() {
+		sql = "select m_id, m_name, m_email, m_birth, m_password , m_phone, m_gender, m_addr, m_date,"
+				+ " m_password_date, m_mail_received, m_message_received  from member order by m_date desc ";
+		list = jdbcTemplate.query(sql, new MemberRowMapper());
+		return list;
+	}
+ 
 
 }
 class MemberRowMapper implements RowMapper<MemberJoinDTO>  {
-
-	public MemberJoinDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
-		System.out.println(rs.getString("m_id"));
+	public MemberJoinDTO mapRow(ResultSet rs, int rowNum) throws SQLException { 
 		MemberJoinDTO member = new MemberJoinDTO();
 
 		member.setId(rs.getString("m_id"));
@@ -65,8 +78,8 @@ class MemberRowMapper implements RowMapper<MemberJoinDTO>  {
 		member.setDate(rs.getString("m_date"));
 		member.setPassdate(rs.getString("m_password_date"));
 		member.setPhone(rs.getString("m_phone"));
- 
+		System.out.println("mapRow:"+member.getId());
 		return member;
-		
+
 	}
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,21 +17,22 @@
 <style>
 #container{
     width:100%;
-    height:1200px;
-    background-color: aquamarine;
+/*     background-color: aquamarine; */
     text-align:center;
+    box-sizing:border-box;
+    margin-bottom:50px;
 }
 #content{
     display:inline-block;
     width:80%;
     height:100%;
-    background-color:lightblue;
+/*     background-color:lightblue; */
     text-align:center;
 }
 #content_header{
     width:100%;
     height:100px;
-    background-color:lightcoral;
+/*     background-color:lightcoral; */
     padding:30px;
     box-sizing:border-box;
     text-align:left;
@@ -38,9 +41,8 @@
 }
 #table_box{
     display:inline-block;
-    width:80%;
-    height:800px;
-    background-color:lightgreen;
+    width:100%;
+/*     background-color:lightgreen; */
 }
 table{
     width:100%;
@@ -51,55 +53,17 @@ tr, td{
 </style>
 
 <body>
-
-    <div id="header">
-        <div id="header_menu">
-            <ul>
-                <li><a href="#">이용안내</a></li>
-                <li><a href="#">고객센터</a></li>
-                <li><a href="#">회원가입</a></li>
-                <li><a href="#">로그인</a></li>
-            </ul>
-        </div>
-        <div id="header_content">
-            <div id="main_logo"><a href=""><img src="./img/tb.png" width="100%" height="100%"></a></div>
-
-            <div id="main_search">
-                <fieldset>
-                    <input type="text" style="width:400px; height:35px;">
-                    <button type="button" id="btn_search"><img src="./img/btn_search_icon.png" alt="" width="20px"
-                            height="20px"></button>
-                </fieldset>
-            </div>
-            <div id="event_banner">
-                <a href=""><img src="./img/event.png" alt="" width="200px" height="70px"></a>
-            </div>
-
-        </div>
-    </div>
-    <div id="menu">
-        <div id="menu_content">
-            <ul id="menu_nav">
-                <li><a href="#">메뉴1</a></li>
-                <li><a href="#">메뉴2</a></li>
-                <li><a href="#">메뉴3</a></li>
-                <li><a href="#">메뉴4</a></li>
-                <li><a href="#">메뉴5</a></li>
-                <li><a href="#">메뉴6</a></li>
-                <li><a href="#">메뉴7</a></li>
-            </ul>
-        </div>
-    </div>
-
+	<jsp:include page="/WEB-INF/view/header.jsp" />
     <!-- 요기까지 헤더 -->
     <div id="container">
         <div id="content">
-            <div id="content_header">공연리스트</div>
+            <div id="content_header">공연상품리스트</div>
             <div id="table_box">
                 <table>
                     <tr>
                         <td>상품번호</td>
                         <td>상품이미지</td>
+                        <td>공연날짜</td>
                         <td>상품명</td>
                         <td>상품올리기</td>
                     </tr>
@@ -107,8 +71,9 @@ tr, td{
             <form action="/tibak/ticket/mainview" method="post">
                     <tr>
                         <td>${ticketList.proNum }</td><input type="hidden" name="proNum" value="${ticketList.proNum }">
-                        <td><img style="width:200px" src="upfile/${ticketList.storeImg }"></td>
-                        <td>${ticketList.name }</td>
+                        <td><img style="width:100px" src="../upfile/${ticketList.storeImg }"></td> <input type="hidden" name="proImg" value="${ticketList.storeImg }">
+                        <td>${ticketList.conDate }</td><input type="hidden" name="conDate" value="${ticketList.conDate }">
+                        <td>${ticketList.name }</td><input type="hidden" name="name" value="${ticketList.name }">
                         <td><input type="submit" value="상품올리기"></td>
                     </tr>
             </form>
@@ -119,36 +84,6 @@ tr, td{
     </div>
 
     <!--푸터-->
-    <div class="footer">
-        <div class="wrap_footer">
-            <div class="foot_link">
-                <div class="l_box">
-                    <a href="">제휴</a>
-                    <a href="">사이트</a>
-                </div>
-                <div class="r_box">
-                    <a href="">예매가이드</a>
-                    <a href="">티켓판매제휴</a>
-                    <a href="">예매문의..</a>
-                </div>
-            </div>
-            <div class="foot_bot">
-                <ul class="foot_com">
-                    <li><a href="">회사소개,,</a></li>
-                    <li><a href="">이용약관,,?</a></li>
-                    <li><a href="">이런거</a></li>
-                    <li><a href="">넣어야되나</a></li>
-                    <li><a href="">일단 만들어봄</a></li>
-                </ul>
-            </div>
-            <div class="com_info">
-                <span>회사이름</span>
-                <span>회사주소</span>
-                <span>회사대표</span>
-                <span>사업자등록번호</span>
-                <span>고객센터(평일주말,,,-ㅅ-</span>
-            </div>
-        </div>
-    </div>
+<jsp:include page="/WEB-INF/view/footer.jsp" />
 </body>
 </html>

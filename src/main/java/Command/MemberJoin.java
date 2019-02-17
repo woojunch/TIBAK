@@ -1,6 +1,6 @@
 package Command;
 
-import java.util.Date;
+
 
 public class MemberJoin {
 	private String name;

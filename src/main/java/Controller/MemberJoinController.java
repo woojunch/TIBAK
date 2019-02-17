@@ -22,14 +22,13 @@ public class MemberJoinController {
 	 
 	
 	@RequestMapping(value="memberJoin", method=RequestMethod.GET)
-	public String join(Model model) {
-		model.addAttribute("memberJoin", new MemberJoin());
-		return "/memberJoin"; 
+	public String join() { 
+		return "member/memberJoin"; 
 	}
 	@RequestMapping(value="memberJoin", method=RequestMethod.POST)
 	public String join1(MemberJoin mem) {
 		MemberJoinService.join(mem);
-		return "/memberJoin";
+		return "member/memberJoin";
 	}
 
 }

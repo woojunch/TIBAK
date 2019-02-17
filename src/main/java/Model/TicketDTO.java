@@ -6,13 +6,13 @@ public class TicketDTO {
 	private String name; //상품명
 	private String num; //공연번호
 	private String hallNum; //공연장번호
+	private String hallName; //공연장이름
 	private String image; //상품이미지
 	private String storeImg;
 	private String content; //상품설명
+	private String storeContent; //상품설명
 	private int price; //가격
 	private String phone; //전화번호
-	private String trafficImage; //교통안내
-	private String storeTraffic;
 	private String reserveInform; //예매안내
 	private String useInform; //이용안내
 	private int reserveBan; //건당예약인원제한
@@ -24,17 +24,25 @@ public class TicketDTO {
 	private String genre; //장르
 	private int ageBan; //나이제한
 	private int viewTime; //관람시간
-	private String seatMap; //좌석배치도
-	private String storeSeat;
+
 	
+
+	public String getHallName() {
+		return hallName;
+	}
+
+
+	public void setHallName(String hallName) {
+		this.hallName = hallName;
+	}
+
 
 	public TicketDTO() {}
 
 	
 	public TicketDTO(String name, String num, String hallNum, String image, String content, int price,
-			String phone, String trafficImage, String reserveInform, String useInform, int reserveBan, String adTime,
-			String exTime, String conDate, String saleTerm, String conTerm, String genre, int ageBan, int viewTime,
-			String seatMap) {
+			String phone, String reserveInform, String useInform, int reserveBan, String adTime,
+			String exTime, String conDate, String saleTerm, String conTerm, String genre, int ageBan, int viewTime) {
 		super();
 		this.name = name;
 		this.num = num;
@@ -43,7 +51,6 @@ public class TicketDTO {
 		this.content = content;
 		this.price = price;
 		this.phone = phone;
-		this.trafficImage = trafficImage;
 		this.reserveInform = reserveInform;
 		this.useInform = useInform;
 		this.reserveBan = reserveBan;
@@ -55,7 +62,6 @@ public class TicketDTO {
 		this.genre = genre;
 		this.ageBan = ageBan;
 		this.viewTime = viewTime;
-		this.seatMap = seatMap;
 	}
 
 
@@ -129,6 +135,16 @@ public class TicketDTO {
 	}
 
 
+	public String getStoreContent() {
+		return storeContent;
+	}
+
+
+	public void setStoreContent(String storeContent) {
+		this.storeContent = storeContent;
+	}
+
+
 	public int getPrice() {
 		return price;
 	}
@@ -146,26 +162,6 @@ public class TicketDTO {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-
-	public String getTrafficImage() {
-		return trafficImage;
-	}
-
-
-	public void setTrafficImage(String trafficImage) {
-		this.trafficImage = trafficImage;
-	}
-
-
-	public String getStoreTraffic() {
-		return storeTraffic;
-	}
-
-
-	public void setStoreTraffic(String storeTraffic) {
-		this.storeTraffic = storeTraffic;
 	}
 
 
@@ -276,25 +272,5 @@ public class TicketDTO {
 
 	public void setViewTime(int viewTime) {
 		this.viewTime = viewTime;
-	}
-
-
-	public String getSeatMap() {
-		return seatMap;
-	}
-
-
-	public void setSeatMap(String seatMap) {
-		this.seatMap = seatMap;
-	}
-
-
-	public String getStoreSeat() {
-		return storeSeat;
-	}
-
-
-	public void setStoreSeat(String storeSeat) {
-		this.storeSeat = storeSeat;
-	}
+	}	
 }

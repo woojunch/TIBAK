@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+ 
 import Command.MemberJoin;
 import Model.MemberJoinDAO;
 import Model.MemberJoinDTO;
@@ -36,5 +36,5 @@ public class MemberJoinService {
 		newMember.setDate(date);
 		
 		memberJoinDao.memberAdd(newMember);
-	}
+	} 
 }

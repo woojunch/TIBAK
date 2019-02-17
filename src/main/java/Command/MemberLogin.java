@@ -1,8 +1,8 @@
 package Command;
 
 public class MemberLogin {
-	private String id;
-	private String password;
+	private String id; 
+	private String password; 
 	public String getId() {
 		return id;
 	}

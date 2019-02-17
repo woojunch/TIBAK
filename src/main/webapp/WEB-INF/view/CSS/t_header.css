@@ -1,8 +1,9 @@
-.wrap_header{
-    width: 80%;
+.wrap_header{ 
     margin: 0 auto;
 }
-
+body{
+    font-family: "Nanum Gothic", sans-serif;
+}
 #header{ 
     text-align:center;  
     margin: 0 auto;
@@ -48,7 +49,7 @@ a{
 }
 #header_content{ 
     display:inline-block;
-    min-width: 1000px;
+    min-width: 1300px;
 }
 #main_logo{
     float:left;
@@ -82,7 +83,6 @@ input[type=text] {
 #menu{
     border-top: 1px solid  #ccc; 
     border-bottom: 1px solid  #ccc; 
-     
     text-align:center; 
     height:50px;
     font-size: 18px;

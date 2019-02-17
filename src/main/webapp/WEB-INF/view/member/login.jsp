@@ -74,7 +74,7 @@ ul li {
 	<div id="login_header">
 		<img src="./img/tb.png" id="login_logo">
 	</div>
-	<form method="post">
+	<form action="main" method="post">
 		<div id="login_container">
 			<div id="login_content">
 				<input type="text" name="id" placeholder="    아이디" /><br> <input

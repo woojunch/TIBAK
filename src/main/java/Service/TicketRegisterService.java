@@ -16,6 +16,7 @@ import Model.TicketDTO;
 public class TicketRegisterService {
 	private TicketDAO ticketDao;
 	private List<TicketDTO> ticketList;
+	private TicketDTO dto;
 	
 	@Autowired
 	public TicketRegisterService(TicketDAO ticketDao) {
@@ -23,24 +24,31 @@ public class TicketRegisterService {
 	}
 	
 	File ImgFile = null;
-	File TrafficFile = null;
-	File SeatFile = null;
+	File ContentFile = null;
+
+
+	
+	
 	String imgOriginalFile = null;
-	String trafficOriginalFile = null;
-	String seatOriginalFile = null;
+	String contentOriginalFile = null;
+
+
 	
 	String imgOriginalFileExtension = null;
-	String trafficOriginalFileExtension = null;
-	String seatOriginalFileExtension = null;
+	String contentOriginalFileExtension = null;
+
+
 	
 	String ImgStoreFile = null;
-	String TrafficStoreFile = null;
-	String SeatStoreFile = null;
+	String ContentStoreFile = null;
+
+
 	
 	
 	String ImgFileSize = null;
-	String TrafficFileSize = null;
-	String SeatFileSize = null;
+	String ContentFileSize= null;
+
+
 	
 	String originalFiles = "";
 	String storeFiles = "";
@@ -48,57 +56,53 @@ public class TicketRegisterService {
 	
 	
 	public String regist(TicketCommand cmd, HttpServletRequest request) {
-		System.out.println("뭐야");
-		System.out.println(cmd.getNum());
-		System.out.println(cmd.getImg());
-		System.out.println(cmd.getPrice());
-		System.out.println(cmd.getStartConTerm());
+
 		String path = null;
-		System.out.println(request.getRealPath("/WEB-INF/view/")+"ticket\\upfile\\");
-		String filePath = request.getRealPath("/WEB-INF/view/")+"ticket\\upfile\\";
+		System.out.println(request.getRealPath("/WEB-INF/view/")+"upfile\\");
+		String filePath = request.getRealPath("/WEB-INF/view/")+"upfile\\";
 		MultipartFile img = cmd.getImg();
-		MultipartFile trafficInform = cmd.getTrafficInform();
+		MultipartFile content = cmd.getContent();
 		MultipartFile seatImg = cmd.getSeatImg();
 		
 		imgOriginalFile = img.getOriginalFilename();
-		trafficOriginalFile= trafficInform.getOriginalFilename();
-		seatOriginalFile=seatImg.getOriginalFilename();
+		contentOriginalFile = content.getOriginalFilename();
+
 		// 확장자 추출  (.hwp  .doc)
 		
 		imgOriginalFileExtension = imgOriginalFile.substring(imgOriginalFile.lastIndexOf("."));
-		trafficOriginalFileExtension = trafficOriginalFile.substring(trafficOriginalFile.lastIndexOf("."));
-		seatOriginalFileExtension = seatOriginalFile.substring(seatOriginalFile.lastIndexOf("."));
+		contentOriginalFileExtension = contentOriginalFile.substring(contentOriginalFile.lastIndexOf("."));
+
 		
 		//임의의이름
 		ImgStoreFile = UUID.randomUUID().toString().replaceAll("-", "");
-		TrafficStoreFile = UUID.randomUUID().toString().replaceAll("-", "");
-		SeatStoreFile = UUID.randomUUID().toString().replaceAll("-", "");
+		ContentStoreFile = UUID.randomUUID().toString().replaceAll("-", "");
+
 		
 		ImgStoreFile = ImgStoreFile+imgOriginalFileExtension;
-		TrafficStoreFile = TrafficStoreFile+trafficOriginalFileExtension;
-		SeatStoreFile = SeatStoreFile+seatOriginalFileExtension;
-		System.out.println("Asdf: "+ImgStoreFile);
+		ContentStoreFile = ContentStoreFile+contentOriginalFileExtension;
+
+
 		
 		ImgFileSize = Long.toString(img.getSize());
-		TrafficFileSize = Long.toString(trafficInform.getSize());
-		SeatFileSize = Long.toString(seatImg.getSize());
+		ContentFileSize =  Long.toString(content.getSize());
+
 		
 		ImgFile = new File(filePath+ImgStoreFile); //파일생성
-		TrafficFile = new File(filePath+TrafficStoreFile); //파일생성
-		SeatFile = new File(filePath+SeatStoreFile); //파일생성
+		ContentFile = new File(filePath+ContentStoreFile);
+
 		
 		try {
 			img.transferTo(ImgFile);
-			trafficInform.transferTo(TrafficFile);
-			seatImg.transferTo(SeatFile);
+			content.transferTo(ContentFile);
+
 		} catch(Exception e){
 			e.printStackTrace();
 			return "ticket/ticket_register";
 		}
 		
-		TicketDTO dto = new TicketDTO(cmd.getName(), cmd.getName(), cmd.getConhallNum(), imgOriginalFile, cmd.getContent(), cmd.getPrice(), cmd.getPhone(), trafficOriginalFile, cmd.getReserveInform(), cmd.getUseInform(), cmd.getReserveBan(), cmd.getAdTime(), cmd.getExTime(), cmd.getConDate(), cmd.getStartSaleTerm()+"~"+cmd.getEndSaleTerm(),cmd.getStartConTerm()+"~"+cmd.getEndConTerm(),cmd.getGenre(),cmd.getAgeBan(),cmd.getViewTime(),seatOriginalFile);
+		TicketDTO dto = new TicketDTO(cmd.getName(), cmd.getNum(), cmd.getConhallNum(), imgOriginalFile, contentOriginalFile, cmd.getPrice(), cmd.getPhone(), cmd.getReserveInform(), cmd.getUseInform(), cmd.getReserveBan(), cmd.getAdTime(), cmd.getExTime(), cmd.getConDate(), cmd.getStartSaleTerm()+" ~ "+cmd.getEndSaleTerm(),cmd.getStartConTerm()+" ~ "+cmd.getEndConTerm(),cmd.getGenre(),cmd.getAgeBan(),cmd.getViewTime());
 		
-		ticketDao.ticketRegist(dto, ImgStoreFile, TrafficStoreFile, SeatStoreFile);
+		ticketDao.ticketRegist(dto, ImgStoreFile, ContentStoreFile);
 		
 		return null;
 		
@@ -109,7 +113,12 @@ public class TicketRegisterService {
 		return ticketList;
 	}
 	
-	public void ticketProRegist() {
+	public void ticketProRegist(String proNum, String conDate, String name, String proImg) {
 		
+	}
+	
+	public TicketDTO ticketDetail(String proNum) {
+		dto = ticketDao.ticketDetail(proNum);
+		return dto;
 	}
 }

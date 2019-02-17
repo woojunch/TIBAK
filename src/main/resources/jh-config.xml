@@ -11,12 +11,18 @@
 	<context:annotation-config />
 
 
+
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10000000" />
 		<property name="maxInMemorySize" value="10000000" />
 	</bean>
 	<bean id="memberJoinDao" class="Model.MemberJoinDAO" />
+	<bean id="businessDao" class="Model.BusinessDAO" />
 	<bean id="memberJoinService" class="Service.MemberJoinService" />
-	<bean id="loginService" class="Service.LoginService" />
+	<bean id="loginService" class="Service.LoginService" /> 
+	<bean id="businessJoinService" class="Service.BusinessJoinService" />  
+	<bean id="businessLoginService" class="Service.BusinessLoginService" /> 
+	<bean id="memberListService" class="Service.MemberListService" /> 
+	<bean id="businessMemberListService" class="Service.BusinessMemberListService" /> 
 </beans>

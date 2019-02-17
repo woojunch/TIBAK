@@ -9,12 +9,11 @@ public class TicketCommand {
 	private String name; //상품명
 	private MultipartFile img;  //상품이미지
 	
-	private String content;  //상품설명
+	private MultipartFile content;  //상품설명
 	private int price;  //가격
 
 	private String conhallNum; //공연장번호
 	private String phone;  //연락처
-	private MultipartFile trafficInform;  //교통안내
 	private String reserveInform; //예매안내
 	private String useInform;  //이용안내
 	private int reserveBan; //예매수제한
@@ -47,10 +46,10 @@ public class TicketCommand {
 	public void setImg(MultipartFile img) {
 		this.img = img;
 	}
-	public String getContent() {
+	public MultipartFile getContent() {
 		return content;
 	}
-	public void setContent(String content) {
+	public void setContent(MultipartFile content) {
 		this.content = content;
 	}
 	public int getPrice() {
@@ -70,12 +69,6 @@ public class TicketCommand {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public MultipartFile getTrafficInform() {
-		return trafficInform;
-	}
-	public void setTrafficInform(MultipartFile trafficInform) {
-		this.trafficInform = trafficInform;
 	}
 	public String getReserveInform() {
 		return reserveInform;
@@ -161,6 +154,6 @@ public class TicketCommand {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-
+	
 
 }
