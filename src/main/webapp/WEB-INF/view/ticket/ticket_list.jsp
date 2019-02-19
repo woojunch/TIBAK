@@ -65,19 +65,20 @@ tr, td{
                         <td>상품이미지</td>
                         <td>공연날짜</td>
                         <td>상품명</td>
-                        <td>상품올리기</td>
+                        <td>상품삭제</td>
                     </tr>
 <c:forEach items="${ticketList }" var="ticketList">
-            <form action="/tibak/ticket/mainview" method="post">
                     <tr>
                         <td>${ticketList.proNum }</td><input type="hidden" name="proNum" value="${ticketList.proNum }">
                         <td><img style="width:100px" src="../upfile/${ticketList.storeImg }"></td> <input type="hidden" name="proImg" value="${ticketList.storeImg }">
                         <td>${ticketList.conDate }</td><input type="hidden" name="conDate" value="${ticketList.conDate }">
                         <td>${ticketList.name }</td><input type="hidden" name="name" value="${ticketList.name }">
-                        <td><input type="submit" value="상품올리기"></td>
+                        <td><button onclick="location.href='/tibak/ticket/delete?proNum=${ticketList.proNum}'">삭제</button></td>
                     </tr>
-            </form>
                     </c:forEach>
+                    <tr>
+                    	<td colspan="5"><button onclick="location.href='/tibak/concert/list'">공연상품추가하기</button></td>
+                    </tr>
                 </table>
             </div>
         </div>

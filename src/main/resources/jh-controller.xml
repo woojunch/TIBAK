@@ -22,4 +22,5 @@
 	<bean class="Controller.BusinessLoginController" />	
 	<bean class="Controller.MemberListController" />	
 	<bean class="Controller.BusinessMemberListController" />	
+	<bean class="Controller.MemberInfoController" />
 </beans>

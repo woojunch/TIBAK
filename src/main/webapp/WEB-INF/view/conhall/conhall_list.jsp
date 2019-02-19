@@ -80,7 +80,8 @@ tr, td{
                     </tr>
 </c:forEach>
 <tr>
-<td colspan="7"><button onclick="location.href='/tibak/concert/list'">공연상품 등록하기</button></td>
+<td colspan="7"><button onclick="location.href='/tibak/concert/list'">공연상품 등록하기</button>
+<button onclick="location.href='/tibak/conhall/register'">공연장추가하기</button></td>
 </tr>
 
                 </table>

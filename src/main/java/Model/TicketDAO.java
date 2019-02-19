@@ -64,6 +64,33 @@ public class TicketDAO {
 		return ticketList;
 	}
 	
+	//공연상품검색결과리스트
+	public List<TicketDTO> ticketListResult(String theme, String area) {
+		
+		if(theme.equals("전체")&&area.equals("전체")) {
+			System.out.println("둘다전체");
+			sql="select T.PRO_NUM, T.PRO_NAME, T.T_NUM, T.T_CON_NUM, T.PRO_IMAGE, T.PRO_STOREIMAGE, T.PRO_INFORM, T.PRO_STOREINFORM, T.PRO_PRICE, T.PRO_PHONE, T.PRO_RESERVE_INFORM, T.PRO_USE_INFORM, T.PRO_RESERVE_BAN, T.PRO_AD_TIME, T.PRO_EX_TIME, T.PRO_CON_DATE, T.T_PRO_PRO_TERM, T.T_PRO_PER_TERM, T.T_PRO_GENRE, T.T_PRO_AGE_BAN, T.T_PRO_VIEW_TIME, H.T_CON_NAME from T_PRODUCT T, CONCERTHALL H WHERE T.T_CON_NUM=H.T_CON_NUM";
+			ticketList=jdbcTemplate.query(sql, new TicketDTORowMapper());
+			return ticketList;
+		} else if(area.equals("전체")) {
+			System.out.println("지역만 전체");
+			sql="select T.PRO_NUM, T.PRO_NAME, T.T_NUM, T.T_CON_NUM, T.PRO_IMAGE, T.PRO_STOREIMAGE, T.PRO_INFORM, T.PRO_STOREINFORM, T.PRO_PRICE, T.PRO_PHONE, T.PRO_RESERVE_INFORM, T.PRO_USE_INFORM, T.PRO_RESERVE_BAN, T.PRO_AD_TIME, T.PRO_EX_TIME, T.PRO_CON_DATE, T.T_PRO_PRO_TERM, T.T_PRO_PER_TERM, T.T_PRO_GENRE, T.T_PRO_AGE_BAN, T.T_PRO_VIEW_TIME, H.T_CON_NAME from T_PRODUCT T, CONCERTHALL H WHERE T.T_CON_NUM=H.T_CON_NUM AND T.T_PRO_GENRE=?";
+			ticketList=jdbcTemplate.query(sql, new TicketDTORowMapper(), theme);
+			return ticketList;
+		} else if(theme.equals("전체")) {
+			System.out.println("테마만 전체");
+			sql="select T.PRO_NUM, T.PRO_NAME, T.T_NUM, T.T_CON_NUM, T.PRO_IMAGE, T.PRO_STOREIMAGE, T.PRO_INFORM, T.PRO_STOREINFORM, T.PRO_PRICE, T.PRO_PHONE, T.PRO_RESERVE_INFORM, T.PRO_USE_INFORM, T.PRO_RESERVE_BAN, T.PRO_AD_TIME, T.PRO_EX_TIME, T.PRO_CON_DATE, T.T_PRO_PRO_TERM, T.T_PRO_PER_TERM, T.T_PRO_GENRE, T.T_PRO_AGE_BAN, T.T_PRO_VIEW_TIME, H.T_CON_NAME from T_PRODUCT T, CONCERTHALL H WHERE T.T_CON_NUM=H.T_CON_NUM AND H.T_CON_AREA=?";
+			ticketList=jdbcTemplate.query(sql, new TicketDTORowMapper(), area);
+			return ticketList;
+		}
+		
+		sql="select T.PRO_NUM, H.T_CON_AREA, T.PRO_NAME, T.T_NUM, T.T_CON_NUM, T.PRO_IMAGE, T.PRO_STOREIMAGE, T.PRO_INFORM, T.PRO_STOREINFORM, T.PRO_PRICE, T.PRO_PHONE, T.PRO_RESERVE_INFORM, T.PRO_USE_INFORM, T.PRO_RESERVE_BAN, T.PRO_AD_TIME, T.PRO_EX_TIME, T.PRO_CON_DATE, T.T_PRO_PRO_TERM, T.T_PRO_PER_TERM, T.T_PRO_GENRE, T.T_PRO_AGE_BAN, T.T_PRO_VIEW_TIME, H.T_CON_NAME from T_PRODUCT T, CONCERTHALL H WHERE T.T_CON_NUM=H.T_CON_NUM AND H.T_CON_AREA=? AND T.T_PRO_GENRE=?";
+		ticketList=jdbcTemplate.query(sql, new TicketDTORowMapper(), area, theme);
+		return ticketList;
+	}
+
+	
+	
 	//티켓상품디테일
 	public TicketDTO ticketDetail(String proNum) {
 		System.out.println("ㅋㅋㅋ:"+proNum);
@@ -71,6 +98,22 @@ public class TicketDAO {
 		dto=jdbcTemplate.queryForObject(sql, new Object[] {proNum}, new TicketDetailMapper());
 		return dto;
 	}
+	
+	//공연삭제
+	public void conDelete(String num) {
+		sql="delete from concert where t_num=?";
+		jdbcTemplate.update(sql, num);
+	}
+	
+	//공연상품삭제
+	public void ticketDelete(String proNum) {
+		sql="delete from t_product where pro_num=?";
+		jdbcTemplate.update(sql, proNum);
+	}
+	
+	
+	
+	
 }
 //공연리스트
 class ConDTORowMapper implements RowMapper <ConDTO> {

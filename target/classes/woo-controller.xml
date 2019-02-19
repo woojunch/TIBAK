@@ -5,6 +5,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
-	<bean class="Controller.AccomodationController" />
+<bean class="Controller.AccomodationController"/>
+
+<bean class="Controller.AccomodationMainController"/>
+
+<bean class="Controller.AccomodationDetailController"/>
+
+<bean class="Controller.AccomodationRegisterController"/>
+
+<bean class="Controller.AccomodationRoomListController"/>
 	
 </beans>

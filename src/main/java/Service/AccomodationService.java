@@ -35,6 +35,8 @@ public class AccomodationService {
 
 		String filePath = request.getRealPath("/WEB-INF/view/")+"Accomodation\\upfile\\";
 		System.out.println(accomodationCommand.getBoardFile()+"이거");
+		System.out.println(accomodationCommand.getBoardFile()+"해보자");
+		
 		MultipartFile report = accomodationCommand.getBoardFile();
 
 		originalFile = report.getOriginalFilename();
@@ -42,8 +44,6 @@ public class AccomodationService {
 		originalFileExtension =originalFile.substring(originalFile.lastIndexOf("."));
 		storeFile = UUID.randomUUID().toString().replaceAll("-", "");
 		storeFile = storeFile + originalFileExtension;
-
-		fileSize = Long.toString(report.getSize());
 		file = new File(filePath+storeFile); 
 		try {
 			report.transferTo(file);
@@ -60,8 +60,9 @@ public class AccomodationService {
 		AccomodationDTO accomodationDTO  = 
 				new AccomodationDTO(accomodationCommand.getbFacilityName(),
 						accomodationCommand.getbFacilityRoom(),
-						area,address,accomodationCommand.getbFacilityImform(), originalFile, storeFile);
+						area,address,accomodationCommand.getbFacilityImform(),storeFile, originalFile);
 		Integer i1;
+		
 		try {
 			i1 = accomodationDao.insert(accomodationDTO);
 		} catch (NoSuchAlgorithmException e) {

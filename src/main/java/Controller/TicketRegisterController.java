@@ -70,4 +70,19 @@ public class TicketRegisterController {
 		model.addAttribute("ticketList",ticketList);
 		return "ticket_view_main/ticket_search";
 	}
+	
+	//장르검색결과리스트
+	@RequestMapping(value="/ticket/search", method=RequestMethod.POST)
+	public String handleSearchResult(@RequestParam("theme") String theme, @RequestParam("area") String area, Model model) {
+		ticketList=ticketRegisterService.ticketListResult(theme, area);
+		model.addAttribute("ticketList",ticketList);
+		return "ticket_view_main/ticket_search";
+	}
+	
+	@RequestMapping(value="/ticket/delete", method=RequestMethod.GET)
+	public String handleDelete(@RequestParam("proNum") String proNum) {
+		System.out.println("번호:"+proNum);
+		ticketRegisterService.ticketDelete(proNum);
+		return "redirect:/ticket/list";
+	}
 }

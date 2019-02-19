@@ -30,5 +30,8 @@ public class MemberJoinController {
 		MemberJoinService.join(mem);
 		return "member/memberJoin";
 	}
-
+	@RequestMapping(value="joinChoice", method=RequestMethod.GET)
+	public String joinChoice() {
+		return "member/joinChoice";
+	}
 }

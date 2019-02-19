@@ -1,6 +1,7 @@
 package Model;
 
 public class AccomodationDTO {
+	private int bFacilityNum;
 	private String bFacilityName;
 	private int bFacilityRoom;
 	private String bFacilityArea;
@@ -8,9 +9,19 @@ public class AccomodationDTO {
 	private String bFacilityInform;
 	private String orginalFile;
 	private String storeFile;
+	
+	
+	public int getbFacilityNum() {
+		return bFacilityNum;
+	}
+	public void setbFacilityNum(int bFacilityNum) {
+		this.bFacilityNum = bFacilityNum;
+	}
+	public AccomodationDTO() {}
 	public AccomodationDTO(String bFacilityName, int bFacilityRoom, String bFacilityArea, String bFaciltityAddr,
 			String bFacilityInform, String orginalFile, String storeFile) {
 		super();
+		
 		this.bFacilityName = bFacilityName;
 		this.bFacilityRoom = bFacilityRoom;
 		this.bFacilityArea = bFacilityArea;

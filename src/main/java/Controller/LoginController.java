@@ -19,6 +19,16 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
+	//로그인 선택
+	@RequestMapping(value="loginChoice")
+	public String loginChoice() {
+		return "member/loginChoice";
+	}
+	
+	
+	
+	
+	//로그인
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String login(Model model) {
 		model.addAttribute("memberLogin", new MemberLogin());

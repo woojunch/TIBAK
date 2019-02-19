@@ -65,6 +65,7 @@ td{
                         <td>상영시간(분)</td>
                         <td>기획사정보</td>
                         <td>상품등록</td>
+                        <td>목록에서 삭제</td>
                     </tr>
 <c:forEach items="${conList }" var="conList">
                     <tr>
@@ -74,10 +75,11 @@ td{
                         <td>${conList.managementInform}</td>
                         <td><button onclick="location.href='/tibak/ticket/register?conNum=${conList.num}&viewTime=${conList.showTime }'">등록</button>
                         </td>
+                        <td><button onclick="location.href='/tibak/concert/delete?conNum=${conList.num}'">삭제</button>
                     </tr>
 </c:forEach>
 				<tr>
-				<td colspan="5"><button onclick="location.href='/tibak/concert/register'">공연목록추가하기</button>
+				<td colspan="6"><button onclick="location.href='/tibak/concert/register'">공연목록추가하기</button>
 				<button onclick="location.href='/tibak/conhall/register'">공연장등록하기</button></td>
 				</tr>
                 </table>

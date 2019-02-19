@@ -22,17 +22,17 @@ function loginMsg(){
                 <ul>
                     <li><a href="#">이용안내</a></li>
                     <li><a href="#">고객센터</a></li>
-                    <li><a href="/tibak/memberJoin">회원가입</a></li>
+                    <li><a href="/tibak/joinChoice">회원가입</a></li>
                     <% if(authInfo!=null){ %>
                     <li><a href="/tibak/main/logout">로그아웃</a></li>
                     <li>${authInfo.id }님</li>
                     <%} else {%>
-                     <li><a href="/tibak/login">로그인</a></li>
+                     <li><a href="/tibak/loginChoice">로그인</a></li>
                      <%} %>
                 </ul>
             </div>
             <div id="header_content">
-                <div id="main_logo"><a href=""><img src="../img/tb.png" width="100%" height="100%"></a></div>
+                <div id="main_logo"><a href="/tibak/ticket/mainview"><img src="../img/tb.png" width="100%" height="100%"></a></div>
 
                 <div id="main_search">
                     <fieldset>
@@ -51,7 +51,6 @@ function loginMsg(){
     <div id="menu">
         <div id="menu_content">
             <ul id="menu_nav">
-                <li><a href="#">홈</a></li>
                 <li><a href="/tibak/ticket/mainview">공연</a></li>
                 <li><a href="/tibak/ticket/search">장르 / 지역</a></li>
                 <% if(authInfo!=null){%>
@@ -60,6 +59,9 @@ function loginMsg(){
                 <li><a href="#" onclick="loginMsg();">마이페이지</a></li>
                 <%} %>
                 <li><a href="/tibak/concert/list">상품등록하기</a></li>
+                <li><a href="/tibak/concert/list">주문관리</a></li>
+                <li><a href="/tibak/concert/list">결제관리</a></li>
+                
             </ul>
         </div>
     </div>

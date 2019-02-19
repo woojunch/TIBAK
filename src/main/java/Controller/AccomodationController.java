@@ -36,7 +36,7 @@ public class AccomodationController {
 
 
 
-			return "survey/submitted";
+			return "/main";
 }
 
 }

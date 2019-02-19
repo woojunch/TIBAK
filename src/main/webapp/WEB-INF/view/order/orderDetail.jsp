@@ -211,7 +211,7 @@ tr, td{
                 </div>
             </div>
             <div id="list_button_box">
-                    <button>목록으로 돌아가기</button>
+                    <button onclick="location.href='/tibak/order/orderhistory'">목록으로 돌아가기</button>
                 </div>
         </div>
     </div>

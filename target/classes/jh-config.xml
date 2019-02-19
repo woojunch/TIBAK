@@ -25,4 +25,5 @@
 	<bean id="businessLoginService" class="Service.BusinessLoginService" /> 
 	<bean id="memberListService" class="Service.MemberListService" /> 
 	<bean id="businessMemberListService" class="Service.BusinessMemberListService" /> 
+	<bean id="memberInfoService" class="Service.MemberInfoService" />
 </beans>

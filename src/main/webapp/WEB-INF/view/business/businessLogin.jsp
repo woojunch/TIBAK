@@ -76,7 +76,7 @@ ul li {
 	</div>
 	<form action="bloginSuccess" method="post">
 		<div id="login_container">
-			<div id="login_content">
+			<div id="login_content"><div style="font-size:20px;">사업자회원 로그인</div>
 				<input type="text" name="id" placeholder="    아이디" /><br> <input
 					type="password" name="password" placeholder="    비밀번호" /><br>
 				<div id="login_menu">

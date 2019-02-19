@@ -19,8 +19,16 @@
 		   <property name="maxUploadSize" value = "10000000" /> 
            <property name="maxInMemorySize" value = "10000000" />
     </bean>
-	
-	  <bean id = "accomodationDao" class = "Model.AccomodationDao" />
-      <bean id ="accomodationService" class= "Service.AccomodationService"/>
+<bean class="Model.AccomodationDao" id="accomodationDao"/>
+
+<bean class="Service.AccomodationService" id="accomodationService"/>
+
+<bean class="Service.AccomodationMainService" id="accomodationMainService"/>
+
+<bean class="Service.AccomodationDetailService" id="accomodationDetailService"/>
+
+<bean class="Service.AccomodationRegisterService" id="accomodationRegisterService"/>
+
+<bean class="Service.AccomodationRoomListService" id="accomodationRoomListService"/>
 
 </beans>

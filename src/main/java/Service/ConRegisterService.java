@@ -34,4 +34,8 @@ public class ConRegisterService {
 		conList = ticketDao.conList();
 		return conList;
 	}
+	
+	public void conDelete(String num) {
+		ticketDao.conDelete(num);
+	}
 }

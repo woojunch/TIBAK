@@ -113,12 +113,21 @@ public class TicketRegisterService {
 		return ticketList;
 	}
 	
-	public void ticketProRegist(String proNum, String conDate, String name, String proImg) {
-		
+	public List<TicketDTO> ticketListResult(String theme, String area){
+		ticketList = ticketDao.ticketListResult(theme, area);
+		return ticketList;
 	}
+
 	
 	public TicketDTO ticketDetail(String proNum) {
 		dto = ticketDao.ticketDetail(proNum);
 		return dto;
 	}
+	
+	public void ticketDelete(String proNum) {
+		ticketDao.ticketDelete(proNum);
+	}
+	
+	
+	
 }
